@@ -3,6 +3,7 @@ import { renderBlock } from './lib.js'
 export function renderSearchFormBlock (checkIn:{}, chechOut:{}) {
   const date = new Date()
   checkIn = date
+  const checkIn1 = (date.setDate(date.getDate() + 1))
   //console.log(date)//oggi
   chechOut = (date.setDate(date.getDate() + 2))
   //console.log(chechOut)//2 giorni in piu
@@ -28,11 +29,11 @@ export function renderSearchFormBlock (checkIn:{}, chechOut:{}) {
         <div class="row">
           <div>
             <label for="check-in-date">Дата заезда</label>
-            <input id="check-in-date" type="date" value="${checkIn} | ${checkIn}+1" min="${checkIn}" max="${lastDay}" name="checkin" />
+            <input id="check-in-date" type="date" value="${checkIn} | ${checkIn1}" min="${checkIn1}" max="${lastDay}" name="checkin" />
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value="${chechOut} | ${chechOut}+2" min="${chechOut}+2" max="${lastDay}" name="checkout" />
+            <input id="check-out-date" type="date" value="${chechOut} | ${chechOut}" min="${chechOut}" max="${lastDay}" name="checkout" />
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
