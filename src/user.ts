@@ -15,9 +15,9 @@ export function renderUserBlock (userName:string, userLink:string, favoriteItems
     'user-block',
     `
     <div class="header-container">
-      <img class="avatar" src="/img/avatar.png" alt="Wade Warren" />
-      <div class="info">${userLink}
-          <p class="name">Wade Warren${userName}</p>
+      <img class="avatar" src="${userLink}" alt="Wade Warren" />
+      <div class="info">
+          <p class="name">${userName}</p>
           <p class="fav">
             <i class="heart-icon ${hasFavoriteItems ? 'active' : ''}"></i>${favoritesCaption}
           </p>
