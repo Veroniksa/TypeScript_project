@@ -1,13 +1,27 @@
 import { renderBlock } from './lib.js'
+import { getDateString, getNextMonthLastDay, getPlusTwoDays, getTomorrow } from "./helpes/date-manager.js"
 
-export function renderSearchFormBlock (checkIn:{}, chechOut:{}) {
-  const date = new Date()
-  checkIn = date
-  const checkIn1 = (date.setDate(date.getDate() + 1))
-  //console.log(date)//oggi
-  chechOut = (date.setDate(date.getDate() + 2))
-  //console.log(chechOut)//2 giorni in piu
-  const lastDay:{} = new Date(date.getFullYear(), date.getMonth()+2, 0);
+
+//TODO interface SearchFormData, function search
+/* export interface SearchFormData {
+  arrivalString: Date
+  leavingString: Date
+}
+
+export const search = () => {
+  console.log("SearchFormData")
+} */
+
+export function renderSearchFormBlock(arrivalDate: Date = getTomorrow(), leavingDate: Date = getPlusTwoDays(arrivalDate)) {
+  const arrivalString = getDateString(arrivalDate)
+  const leavinglString = getDateString(leavingDate)
+  const minDate = getDateString(new Date())
+  const maxDate = getDateString(getNextMonthLastDay())
+  console.log(arrivalString)
+
+  const search = () => {
+
+  }
 
 
   renderBlock(
@@ -29,11 +43,11 @@ export function renderSearchFormBlock (checkIn:{}, chechOut:{}) {
         <div class="row">
           <div>
             <label for="check-in-date">Дата заезда</label>
-            <input id="check-in-date" type="date" value="${checkIn} | ${checkIn1}" min="${checkIn1}" max="${lastDay}" name="checkin" />
+            <input id="check-in-date" type="date" value="${arrivalString}" min="${minDate}" max="${maxDate}" name="checkin" />
           </div>
           <div>
             <label for="check-out-date">Дата выезда</label>
-            <input id="check-out-date" type="date" value="${chechOut} | ${chechOut}" min="${chechOut}" max="${lastDay}" name="checkout" />
+            <input id="check-out-date" type="date" value="${leavinglString}" min="${minDate}" max="${maxDate}" name="checkout" />
           </div>
           <div>
             <label for="max-price">Макс. цена суток</label>
