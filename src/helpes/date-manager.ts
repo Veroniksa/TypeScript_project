@@ -25,5 +25,5 @@ export const getDateString = (date: Date) => {
     const year = date.getFullYear()
     const month = addZero(date.getMonth() + 1)
     const day = addZero(date.getDate())
-    return `${day}--${month}--${year}`
+    return `${year}/${month}/${day}`
 }
